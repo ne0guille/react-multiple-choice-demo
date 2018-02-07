@@ -10,8 +10,8 @@ function ChoiceResult(props) {
 }
 
 ChoiceResult.propTypes = {
-  count: PropTypes.string.isRequired,
-  total: PropTypes.string.isRequired
+  count: PropTypes.number.isRequired,
+  total: PropTypes.number.isRequired
 };
 
 export default ChoiceResult;
