@@ -3,15 +3,15 @@ import PropTypes from 'prop-types';
 
 function ChoiceResult(props) {
   return (
-    <p className="choice-result">
-      {props.result}
-    </p>
+    <h3 className="choice-result">
+      {`TOTAL SCORE: ${props.total}/${props.count} - ${(props.total / props.count) * 100}%`}      
+    </h3>
   )
 }
 
 ChoiceResult.propTypes = {
-  result: PropTypes.string.isRequired,
-  passed: PropTypes.bool.isRequired
+  count: PropTypes.string.isRequired,
+  total: PropTypes.string.isRequired
 };
 
 export default ChoiceResult;

@@ -5,6 +5,7 @@ import { Alert, Button, Container, Row, Col } from 'reactstrap';
 import './ChoiceList.css';
 import Answer from '../Answer/Answer';
 import Question from '../Question/Question';
+import ChoiceResult from '../ChoiceResult/ChoiceResult';
 
 import Spinner from '../../../../components/Spinner';
 
@@ -39,14 +40,29 @@ class ChoiceList extends React.Component {
   renderChoiceAnswers(options, questionId) {
     const { id, value } = options;
 
-    return (
-      <Answer
-        key={id}
-        text={value}
-        questionId={questionId}
-        onAnswerChecked={this.onAnswerClicked}
-      />
-    );
+    if (!this.props.correctAnswers.length) {
+      return (
+        <Answer
+          key={id}
+          text={value}
+          questionId={questionId}
+          onAnswerChecked={this.onAnswerClicked}
+        />
+      )
+    }
+    else {
+      const answer = this.props.correctAnswers.find(a => a.questionId === questionId);
+
+      return (
+        <Answer
+          key={id}
+          text={value}
+          questionId={questionId}
+          onAnswerChecked={this.onAnswerClicked}
+          result={answer.correctAnswer}          
+          isCorrect={answer.correctAnswerId == id}
+        />)
+    }
   }
 
   renderQuestion(q) {
@@ -73,6 +89,17 @@ class ChoiceList extends React.Component {
     );
   }
 
+  renderResult() {
+    return (
+      <Row>
+        <ChoiceResult 
+          total={this.props.totalScore} 
+          count={this.props.correctAnswers.length} 
+          />
+      </Row>
+    );
+  }
+
   render() {
     return (
       <Container className="choice">
@@ -80,10 +107,12 @@ class ChoiceList extends React.Component {
         {!this.props.isLoading &&
           <div>
             {this.props.questions.map((q) =>
-              this.renderQuestion(q)) 
+              this.renderQuestion(q))
             }
             <hr />
-            {this.renderSaveButton()}
+            {!this.props.correctAnswers.length ? 
+              this.renderSaveButton():
+              this.renderResult() }
           </div>
         }
       </Container>

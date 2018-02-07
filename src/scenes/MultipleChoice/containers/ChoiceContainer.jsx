@@ -6,7 +6,6 @@ import * as choiceActions from '../data/actions';
 
 import ChoiceList from '../components/ChoiceList/ChoiceList';
 
-
 class ChoiceContainer extends React.Component {
   constructor(props) {
     super(props);

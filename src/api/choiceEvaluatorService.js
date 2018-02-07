@@ -1,14 +1,18 @@
 import { mockedResponses } from './mockedResponses';
 
 export const choiceEvaluator = (answers) => {
-   const result = answers.map( (a, index) => {
+   const correctAnswers = answers.map((a, index) => {
        return {
            isCorrect: a === mockedResponses[index].choice.correctAnswer,
            correctAnswer: mockedResponses[index].choice.correctAnswer,
-           correctAnswerId: mockedResponses[index].choice.correctAnswerId
+           correctAnswerId: mockedResponses[index].choice.correctAnswerId,
+           questionId: mockedResponses[index].id
        }
    })
-   result.totalScore =  result.map(x=> x.isCorrect).reduce((a,b) => b? ++a:a,0);
+   const totalScore =  correctAnswers.map(x=> x.isCorrect).reduce((a,b) => b? ++a:a,0);
 
-  return result;
+  return {
+      correctAnswers,
+      totalScore
+  };
 }

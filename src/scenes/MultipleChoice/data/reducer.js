@@ -34,18 +34,18 @@ export const choiceLoadingReducer = (state = false, action) => {
   }
 };
 
-export const choiceSaveReducer = (state = 0, action) => {
-  switch (action.type) {
-    case Actions.CHOICE_SAVE:
-      return 0;
-    case Actions.CHOICE_SAVE_SUCCESS:
-      return action.payload;
-    case Actions.CHOICE_SAVE_ERROR:
-      return action.payload;
-    default:
-      return state;
-  }
-};
+// export const choiceSaveReducer = (state = 0, action) => {
+//   switch (action.type) {
+//     case Actions.CHOICE_SAVE:
+//       return 0;
+//     case Actions.CHOICE_SAVE_SUCCESS:
+//       return action.payload;
+//     case Actions.CHOICE_SAVE_ERROR:
+//       return action.payload;
+//     default:
+//       return state;
+//   }
+// };
 
 export const choiceResultReducer = (state = { totalScore: 0, correctAnswers: [] }, action) => {
   switch (action.type) {

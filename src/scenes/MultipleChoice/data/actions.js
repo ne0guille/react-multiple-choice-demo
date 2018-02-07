@@ -78,8 +78,8 @@ export function saveChoice(answers) {
   return (dispatch) => {
     dispatch(saveChoiceAction(answers));
     return api.submitChoice(answers).then(response => {
-      const { totalScore, ...answerStatus } = response;
-      setTimeout(() => dispatch(saveChoiceSuccess({status: answerStatus, totalScore: totalScore,  })), 1000);
+      const { totalScore, correctAnswers } = response;
+      setTimeout(() => dispatch(saveChoiceSuccess({correctAnswers, totalScore })), 1000);
     })
       .catch(err => saveChoiceError(err));
   };
