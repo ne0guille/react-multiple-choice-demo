@@ -1,0 +1,33 @@
+.answer {
+  text-align: left;
+}
+
+.answer:hover {
+  background-color: lightblue;
+  cursor: pointer;
+  width: 100%;
+}
+
+.answer:hover > label {
+  background-color: inherit;
+  cursor: pointer;
+  width: 100%;
+}
+
+.answer--correct, .answer--correct:hover {
+  background-color: lightgreen;
+}
+
+.answer--incorrect {
+  background-color: lightcoral;
+}
+
+
+
+.answer > label {
+  margin-bottom: 0;
+}
+
+.answer__input {
+  margin-right: 10px;
+}
