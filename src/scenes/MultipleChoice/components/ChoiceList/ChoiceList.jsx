@@ -1,6 +1,6 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import { Alert, Button, Container, Row, Col } from 'reactstrap';
+import { Button, Container, Row } from 'reactstrap';
 
 import './ChoiceList.css';
 import Answer from '../Answer/Answer';
@@ -60,7 +60,7 @@ class ChoiceList extends React.Component {
           questionId={questionId}
           onAnswerChecked={this.onAnswerClicked}
           result={answer.correctAnswer}          
-          isCorrect={answer.correctAnswerId == id}
+          isCorrect={answer.correctAnswerId === id}
         />)
     }
   }

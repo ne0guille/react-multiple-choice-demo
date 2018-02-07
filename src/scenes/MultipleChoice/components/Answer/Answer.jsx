@@ -13,7 +13,6 @@ function Answer(props) {
           <input type="radio"
             id={props.text}
             value={props.text}
-            onChange={props.onAnswerChecked}
             className="answer__input"
             name={`answerGroup-${props.questionId}`}
             onChange={e => props.onAnswerChecked(e, props.questionId)}
